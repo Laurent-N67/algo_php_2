@@ -15,6 +15,7 @@
         $result="";
         foreach($tableauValeurs as $valeurs){
             $result.= var_dump($valeurs);
+            
         }
         return $result;
     }

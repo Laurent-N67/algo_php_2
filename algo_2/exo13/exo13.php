@@ -5,6 +5,7 @@
             private int $_nbPortes;
             private int $_vitesseActuelle;
             private bool $_action;
+            
 
             function __construct(string $marque, string $modele, int $nbPortes){
                 $this->_marque=$marque;
@@ -58,11 +59,40 @@
                 $this->_action = true;
                 echo "Le voiture de marque ".$this->_marque." démarre<br>";
             }
+            public function arreter(){
+                $this->_action = false;
+                echo "Le voiture de marque ".$this->_marque." s'arrete<br>";
+            }
+
+            
+            public function accel($vitesse){
+                
+                if($this->_action){
+                    $this->_vitesseActuelle += $vitesse;
+                    echo "la ". $this->_marque." accelere de " .$vitesse."km/h<br>La vitesse de la ".$this->_marque." est de ".$vitesse."km/h<br>";
+                }
+                else{
+                    echo "la voiture doit etre démarrer<br>";
+                }
+            }
+
+
+
+            public function deccel($deccel){
+                if($this->_vitesseActuelle>$deccel){
+                    $this->_vitesseActuelle -= $deccel;
+                    echo "la ". $this->_marque." deccelere de " .$deccel."km/h<br>La vitesse de la ".$this->_marque." est de ".$this->_vitesseActuelle."km/h<br>";
+                }
+                else{
+                    echo "la voiture doit avoir plus de vitesse<br>";
+                }
+            }
+
 
 
             public function __toString(){
                 $etat = ($this->_action) ? "démarré" : "stoppé";
-                return "<p>----------------------<br>Marque : ". $this->_marque."<br>modèle : ".$this->_modele."<br>Nombres de portes : ".$this->_nbPortes."<br>Vitesse du véhicule ".$this->_vitesseActuelle."<br> état du véhicule : ".$etat."</p>";
+                return "<p>----------------------<br>Marque : ". $this->_marque."<br>modèle : ".$this->_modele."<br>Nombres de portes : ".$this->_nbPortes."<br>Vitesse du véhicule ".$this->_vitesseActuelle."km/h<br>état de la voiture:".$etat."</p>";
             }
         }
     ?>

@@ -36,7 +36,7 @@
         $result = "";
         foreach($tableau as $case=>$checked){
             $result .= "<label for='$case'>$case :</label>";
-            $result .= "<input type='checkbox' id='$case' name='$case' $checked ><br>";
+            $result .= "<input type='checkbox' id='$case' name='$case'$checked ><br>";
         }
         return $result;
        }
